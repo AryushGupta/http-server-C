@@ -3,12 +3,14 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
+#include <arpa/inet.h>
 
 #define PORT 8080
 
 int main(){
     int server_fd;
-    struct sockaddr_in address;
+    struct sockaddr_in address = {0};
+    int client_fd;
     
     // Creating the Socket file descriptor
     server_fd = socket(AF_INET , SOCK_STREAM , 0);
@@ -20,12 +22,8 @@ int main(){
     
     address.sin_family = AF_INET;
     address.sin_port = htons(PORT);
-    address.sin_addr.s_addr = INADDR_ANY;
-    printf("server_fd = %d\n", server_fd);
-    printf("sin_family = %d\n", address.sin_family);
-    printf("sin_port = %d\n", ntohs(address.sin_port));
-    printf("sin_addr = %u\n", address.sin_addr.s_addr);
-    printf("address size = %zu\n", sizeof(address));
+    // address.sin_addr.s_addr = INADDR_ANY;
+    inet_pton(AF_INET , "127.0.0.1" , &address.sin_addr);
 
     if(bind(server_fd, (struct sockaddr *)&address , sizeof(address)) < 0){
         perror("Bind Failed");
@@ -34,7 +32,21 @@ int main(){
     }
 
     printf("Bind successful\n");
-    close(server_fd);
+
+    if(listen(server_fd , 5) < 0){
+        perror("listen");
+        return 1;
+    }
+
+    printf("Server is listening on port 8080\n");
+
+    client_fd = accept(server_fd , NULL , NULL);
+    if(client_fd < 0){
+        perror("Accept");
+        return 1;
+    }
+
+    printf("Client connected!\n");
 
     return 0;
 }
