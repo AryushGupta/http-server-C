@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Chat Template UI using HTML and CSS</title>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="chat-container" id="chatBox">
+        <div class="message-container">
+            <div class="message sender-message">
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20220123013311/gfg.png" 
+                     alt="Sender Avatar"
+                     class="avatar">
+                Hello there!
+            </div>
+            <div class="message receiver-message">
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20210511160813/g4g.jpg"
+                     alt="Receiver Avatar" 
+                     class="avatar">
+                Hi! How can I help you today?
+            </div>
+            <div class="message sender-message">
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20220123013311/gfg.png" 
+                     alt="Sender Avatar"
+                     class="avatar">
+                I have a question about your products.
+            </div>
+            <div class="message receiver-message">
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20210511160813/g4g.jpg"
+                     alt="Receiver Avatar" 
+                     class="avatar">
+                Sure, feel free to ask!
+            </div>
+        </div>
+
+        <div class="message">
+            <input type="text" 
+                   id="messageInput"
+                   placeholder="Type your message...">
+            <button id="sendButton">Send</button>
+        </div>
+    </div>
+</body>
+
+</html>
