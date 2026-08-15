@@ -3,10 +3,10 @@ const sendButton = document.getElementById("sendButton");
 const chatBox = document.getElementById("chatBox");
 const messageContainer = document.getElementById("message-container");
 
-function sendMessage(){
+function sendMessage() {
     const text = input.value.trim();
     // checking for empty message
-    if(text === ""){
+    if (text === "") {
         return;
     }
 
@@ -19,11 +19,9 @@ function sendMessage(){
     senderLogo.classList.add("avatar");
 
     newMessage.appendChild(senderLogo);
-
     newMessage.appendChild(document.createTextNode(text));
-
     messageContainer.appendChild(newMessage);
-    
+
     input.value = "";
     input.focus();
 
